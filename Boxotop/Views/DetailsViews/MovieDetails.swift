@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MovieDetails: View {
     let movie: Movie
+    
+    let casting = previewCastingResponse
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -54,7 +56,12 @@ struct MovieDetails: View {
                 }
                 
                 Section("Casting") {
-                    Text("List of the actor")
+                    ForEach(previewCastingResponse.cast.sorted(by: {$0.popularity > $1.popularity }).prefix(10), id: \.id) { person in
+                        VStack {
+                            Text(person.name)
+                            Text("\(person.popularity)")
+                        }
+                    }
                 }
                 
                 Section("Similar Movies") {
