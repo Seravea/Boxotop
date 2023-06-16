@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+var previewResponseData: MoviesResponse  = load("previewMovieData.json")
 
 
 func load<T: Decodable>(_ filename: String) -> T {

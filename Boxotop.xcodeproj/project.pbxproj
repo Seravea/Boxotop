@@ -88,8 +88,8 @@
 		14B40D082A3C533F00E0B68B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				14B40D132A3C728400E0B68B /* DetailsViews */,
 				14B40D122A3C727800E0B68B /* ListViews */,
+				14B40D132A3C728400E0B68B /* DetailsViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
