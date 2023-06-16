@@ -12,13 +12,18 @@ struct BoxOfficeListView: View {
     var previewDataTest = previewResponseData
     
     var body: some View {
-        VStack {
-            
-            ForEach(previewDataTest.results, id: \.id) { movie in
+        NavigationView {
+            VStack {
                 
-                Text(movie.title)
-                
+                ScrollView {
+                    ForEach(previewDataTest.results.indices, id: \.self) { index in
+                        
+                        MovieCardView(movie: previewDataTest.results[index], index: index)
+                        
+                    }
+                }
             }
+            .navigationTitle("Box office")
         }
     }
 }
