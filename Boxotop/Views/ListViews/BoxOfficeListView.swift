@@ -28,6 +28,7 @@ struct BoxOfficeListView: View {
                     
                 }
                 .padding(.horizontal)
+                .scrollIndicators(.hidden)
                 
             }
             .navigationTitle("Box office")

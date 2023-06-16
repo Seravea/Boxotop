@@ -14,7 +14,8 @@ struct MovieCardView: View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 10)
                 .frame(height: 150)
-                .foregroundColor(index % 2 == 0 ? .green : .gray)
+                .foregroundColor(index % 2 == 0 ? .green.opacity(0.2) : .gray.opacity(0.2))
+                .shadow(radius: 0.1)
             
             HStack(alignment: .top) {
                 
@@ -25,6 +26,7 @@ struct MovieCardView: View {
                         .frame(width: 90, height: 130)
                         .clipped()
                         .cornerRadius(9)
+                        .shadow(radius: 0.1)
                 } placeholder: {
                     ZStack {
                         ProgressView()
@@ -34,15 +36,17 @@ struct MovieCardView: View {
                             .cornerRadius(9)
                             .foregroundColor(.gray.opacity(0.9))
                             .padding(.trailing, 8)
+                            .shadow(radius: 0.1)
                     }
                 }
 
-                VStack(alignment: .leading) {
+                VStack {
                     Text(movie.title)
                         .font(.title)
-                        
+                        .multilineTextAlignment(.leading)
                     
                 }
+                
             }
             .padding(.horizontal)
         }
