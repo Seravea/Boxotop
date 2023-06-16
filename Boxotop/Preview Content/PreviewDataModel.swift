@@ -7,6 +7,8 @@
 
 import Foundation
 
+var previewCastingResponse: CastingResponse = load("previewCastingData.json")
+
 var previewResponseData: MoviesResponse  = load("previewMovieData.json")
 
 

@@ -18,6 +18,8 @@
 		14B40D172A3C75A000E0B68B /* previewMovieData.json in Resources */ = {isa = PBXBuildFile; fileRef = 14B40D162A3C75A000E0B68B /* previewMovieData.json */; };
 		14B40D192A3C75C400E0B68B /* PreviewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D182A3C75C400E0B68B /* PreviewDataModel.swift */; };
 		14B40D1B2A3C78E200E0B68B /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D1A2A3C78E200E0B68B /* MovieCardView.swift */; };
+		14B40D1D2A3CA36400E0B68B /* Casting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D1C2A3CA36400E0B68B /* Casting.swift */; };
+		14B40D1F2A3CA65300E0B68B /* previewCastingData.json in Resources */ = {isa = PBXBuildFile; fileRef = 14B40D1E2A3CA65300E0B68B /* previewCastingData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		14B40D162A3C75A000E0B68B /* previewMovieData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = previewMovieData.json; sourceTree = "<group>"; };
 		14B40D182A3C75C400E0B68B /* PreviewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataModel.swift; sourceTree = "<group>"; };
 		14B40D1A2A3C78E200E0B68B /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
+		14B40D1C2A3CA36400E0B68B /* Casting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Casting.swift; sourceTree = "<group>"; };
+		14B40D1E2A3CA65300E0B68B /* previewCastingData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = previewCastingData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				14B40D182A3C75C400E0B68B /* PreviewDataModel.swift */,
+				14B40D1E2A3CA65300E0B68B /* previewCastingData.json */,
 				14B40D162A3C75A000E0B68B /* previewMovieData.json */,
 				14B40D012A3C531000E0B68B /* Preview Assets.xcassets */,
 			);
@@ -100,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				14B40D0E2A3C53B600E0B68B /* Movie.swift */,
+				14B40D1C2A3CA36400E0B68B /* Casting.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -187,6 +193,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B40D1F2A3CA65300E0B68B /* previewCastingData.json in Resources */,
 				14B40D172A3C75A000E0B68B /* previewMovieData.json in Resources */,
 				14B40D022A3C531000E0B68B /* Preview Assets.xcassets in Resources */,
 				14B40CFF2A3C531000E0B68B /* Assets.xcassets in Resources */,
@@ -200,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14B40D1D2A3CA36400E0B68B /* Casting.swift in Sources */,
 				14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */,
 				14B40D152A3C72C100E0B68B /* MoviesViewModel.swift in Sources */,
 				14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */,
