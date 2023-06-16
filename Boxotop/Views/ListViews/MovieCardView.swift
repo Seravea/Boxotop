@@ -13,15 +13,34 @@ struct MovieCardView: View {
     var body: some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 10)
-                .frame(height: 140)
+                .frame(height: 150)
                 .foregroundColor(index % 2 == 0 ? .green : .gray)
             
             HStack(alignment: .top) {
-                Rectangle()
-                    .frame(width: 70, height: 100)
+                
+                AsyncImage(url: movie.posterURL) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 90, height: 130)
+                        .clipped()
+                        .cornerRadius(9)
+                } placeholder: {
+                    ZStack {
+                        ProgressView()
+                            .progressViewStyle(.circular)
+                        Rectangle()
+                            .frame(width: 90, height: 130)
+                            .cornerRadius(9)
+                            .foregroundColor(.gray.opacity(0.9))
+                            .padding(.trailing, 8)
+                    }
+                }
+
                 VStack(alignment: .leading) {
                     Text(movie.title)
                         .font(.title)
+                        
                     
                 }
             }
