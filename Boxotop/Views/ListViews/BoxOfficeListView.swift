@@ -17,11 +17,18 @@ struct BoxOfficeListView: View {
                 
                 ScrollView {
                     ForEach(previewDataTest.results.indices, id: \.self) { index in
-                        
-                        MovieCardView(movie: previewDataTest.results[index], index: index)
+                        NavigationLink {
+                            MovieDetails(movie: previewDataTest.results[index])
+                        }label: {
+                            MovieCardView(movie: previewDataTest.results[index], index: index)
+                        }
+                        .tint(.black)
                         
                     }
+                    
                 }
+                .padding(.horizontal)
+                
             }
             .navigationTitle("Box office")
         }
