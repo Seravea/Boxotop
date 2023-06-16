@@ -17,6 +17,7 @@
 		14B40D152A3C72C100E0B68B /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D142A3C72C100E0B68B /* MoviesViewModel.swift */; };
 		14B40D172A3C75A000E0B68B /* previewMovieData.json in Resources */ = {isa = PBXBuildFile; fileRef = 14B40D162A3C75A000E0B68B /* previewMovieData.json */; };
 		14B40D192A3C75C400E0B68B /* PreviewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D182A3C75C400E0B68B /* PreviewDataModel.swift */; };
+		14B40D1B2A3C78E200E0B68B /* MovieCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40D1A2A3C78E200E0B68B /* MovieCardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		14B40D142A3C72C100E0B68B /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		14B40D162A3C75A000E0B68B /* previewMovieData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = previewMovieData.json; sourceTree = "<group>"; };
 		14B40D182A3C75C400E0B68B /* PreviewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataModel.swift; sourceTree = "<group>"; };
+		14B40D1A2A3C78E200E0B68B /* MovieCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				14B40D0A2A3C537600E0B68B /* BoxOfficeListView.swift */,
+				14B40D1A2A3C78E200E0B68B /* MovieCardView.swift */,
 			);
 			path = ListViews;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */,
 				14B40D152A3C72C100E0B68B /* MoviesViewModel.swift in Sources */,
 				14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */,
+				14B40D1B2A3C78E200E0B68B /* MovieCardView.swift in Sources */,
 				14B40D0B2A3C537600E0B68B /* BoxOfficeListView.swift in Sources */,
 				14B40D192A3C75C400E0B68B /* PreviewDataModel.swift in Sources */,
 				14B40D0D2A3C538000E0B68B /* MovieDetails.swift in Sources */,

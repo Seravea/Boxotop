@@ -10,7 +10,7 @@ import Foundation
 // struct of the API Response from the JSON
 struct MoviesResponse: Codable {
     let page: Int
-    let results: [Result]
+    let results: [Movie]
     let totalPages, totalResults: Int
 
     enum CodingKeys: String, CodingKey {
@@ -21,7 +21,7 @@ struct MoviesResponse: Codable {
 }
 
 //struct of a Movie
-struct Result: Codable {
+struct Movie: Codable {
     let adult: Bool
     let backdropPath: String
     let id: Int

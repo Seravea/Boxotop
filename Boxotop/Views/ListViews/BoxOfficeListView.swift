@@ -13,7 +13,9 @@ struct BoxOfficeListView: View {
     
     var body: some View {
         VStack {
+            
             ForEach(previewDataTest.results, id: \.id) { movie in
+                
                 Text(movie.title)
                 
             }
