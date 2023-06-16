@@ -19,7 +19,7 @@ struct MovieCardView: View {
             HStack(alignment: .top) {
                 Rectangle()
                     .frame(width: 70, height: 100)
-                VStack {
+                VStack(alignment: .leading) {
                     Text(movie.title)
                         .font(.title)
                     
@@ -32,6 +32,6 @@ struct MovieCardView: View {
 
 struct MovieCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardView(movie: Movie.testingMovie, index: 1)
+        MovieCardView(movie: previewResponseData.results[2], index: 1)
     }
 }
