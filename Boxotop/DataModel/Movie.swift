@@ -34,6 +34,12 @@ struct Movie: Codable {
     let video: Bool
     let voteAverage: Double
     let voteCount: Int
+    
+    var posterURL: URL {
+        let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")!
+        return baseURL.appending(path: posterPath)
+    }
+    
 
     enum CodingKeys: String, CodingKey {
         case adult
