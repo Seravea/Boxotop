@@ -9,18 +9,18 @@ import SwiftUI
 
 struct BoxOfficeListView: View {
     
-    var previewDataTest = previewResponseData
-    
+    //var previewDataTest = previewResponseData
+    @StateObject var movieViewModel = MovieViewModel()
     var body: some View {
         NavigationView {
             VStack {
                 
                 ScrollView {
-                    ForEach(previewDataTest.results.indices, id: \.self) { index in
+                    ForEach(movieViewModel.boxOfficeMovies.indices, id: \.self) { index in
                         NavigationLink {
-                            MovieDetails(movie: previewDataTest.results[index])
+                            MovieDetails(movie: movieViewModel.boxOfficeMovies[index])
                         }label: {
-                            MovieCardView(movie: previewDataTest.results[index], index: index)
+                            MovieCardView(movie: movieViewModel.boxOfficeMovies[index], index: index)
                         }
                         .tint(.black)
                         
@@ -30,6 +30,9 @@ struct BoxOfficeListView: View {
                 .padding(.horizontal)
                 .scrollIndicators(.hidden)
                 
+            }
+            .task {
+                await movieViewModel.loadBoxOfficeMovies()
             }
             .navigationTitle("Box office")
         }

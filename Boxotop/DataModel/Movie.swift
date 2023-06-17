@@ -27,7 +27,6 @@ struct Movie: Codable {
     let id: Int
     let title: String
     let originalTitle, overview, posterPath: String
-    let mediaType: MediaType
     let genreIDS: [Int]
     let popularity: Double
     let releaseDate: String
@@ -48,7 +47,6 @@ struct Movie: Codable {
         case originalTitle = "original_title"
         case overview
         case posterPath = "poster_path"
-        case mediaType = "media_type"
         case genreIDS = "genre_ids"
         case popularity
         case releaseDate = "release_date"

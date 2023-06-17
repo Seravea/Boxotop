@@ -11,7 +11,7 @@ import SwiftUI
 struct BoxotopApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BoxOfficeListView()
         }
     }
 }
