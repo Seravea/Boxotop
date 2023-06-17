@@ -45,6 +45,7 @@ struct MovieCardView: View {
                         .font(.title)
                         .multilineTextAlignment(.leading)
                     
+                    
                 }
                 
             }

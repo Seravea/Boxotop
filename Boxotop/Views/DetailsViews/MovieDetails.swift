@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct MovieDetails: View {
+    
     let movie: Movie
     
     let casting = previewCastingResponse
+    
     var body: some View {
         VStack(alignment: .leading) {
             

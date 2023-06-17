@@ -21,7 +21,7 @@ import Foundation
 
         
         do {
-            guard let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=fr-FR&page=1") else {
+            guard let url = URL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)&language=en-US&page=1") else {
                 print("Couldn't load URL")
                 return
             }
