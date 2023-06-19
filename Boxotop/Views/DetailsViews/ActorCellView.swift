@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ActorCellView: View {
     let person: Cast
+    @ObservedObject var actorImageViewModel = ActorImagesViewModel()
     var body: some View {
         VStack {
             Text(person.name)
