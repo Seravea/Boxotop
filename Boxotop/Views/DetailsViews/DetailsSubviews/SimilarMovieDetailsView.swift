@@ -28,6 +28,7 @@ struct SimilarMovieDetailsView: View {
                     }
                 }
                 .padding([.horizontal, .top])
+                
             ScrollView {
                 Text(movie.overview)
                 AsyncImage(url: movie.posterURL) { image in

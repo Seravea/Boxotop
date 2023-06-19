@@ -13,18 +13,14 @@ import Foundation
     
     
     func loadActorURLsImage(actorID: Int) async {
-        
+        let base: LoadingProperties = .actorImages(actorID: actorID)
         do {
-            guard let url = LoadingProperties.actorImages(actorID: actorID).ApiURL else {
+            guard let url = base.ApiURL else {
                 print("Couldn't load URL")
                 return
             }
             
-            var URLRequest = URLRequest(url: url)
-            URLRequest.httpMethod = "GET"
-            URLRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
-            
-            
+            var URLRequest = base.baseURLRequest
             
             let (data, networkResponse) = try await URLSession.shared.data(for: URLRequest)
             

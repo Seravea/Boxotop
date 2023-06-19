@@ -12,17 +12,16 @@ import Foundation
     
     
     func loadBoxOfficeMovies() async {
-
+        
+        let base: LoadingProperties = .boxOfficeMovies
         
         do {
-            guard let url = LoadingProperties.boxOfficeMovies.ApiURL else {
+            guard let url = base.ApiURL else {
                 print("Couldn't load URL")
                 return
             }
               
-            var urlRequest = URLRequest(url: url)
-            urlRequest.httpMethod = "GET"
-            urlRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
+            let urlRequest = base.baseURLRequest
             
             
             let (data, networkResponse) = try await URLSession.shared.data(for: urlRequest)

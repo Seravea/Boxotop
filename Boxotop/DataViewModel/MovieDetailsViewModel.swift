@@ -15,16 +15,16 @@ import Foundation
     
     func loadMovieCasting(movieID: Int) async {
        
+        let base: LoadingProperties = .actorsList(movieID: movieID)
+        
         do {
-            guard let url = LoadingProperties.actorsList(movieID: movieID).ApiURL else {
+            guard let url = base.ApiURL else {
                 print("Couldn't load URL")
                 return
             }
             
             
-            var URLRequest = URLRequest(url: url)
-            URLRequest.httpMethod = "GET"
-            URLRequest.allHTTPHeaderFields = LoadingProperties.boxOfficeMovies.headers
+            var URLRequest = base.baseURLRequest
             
             
             let (data, networkResponse) = try await URLSession.shared.data(for: URLRequest)
@@ -47,16 +47,15 @@ import Foundation
     
     func loadSimilarMovies(movieID: Int) async {
         
+        let base: LoadingProperties = .similarMovies(movieID: movieID)
+        
         do {
-            guard let url = LoadingProperties.similarMovies(movieID: movieID).ApiURL else {
+            guard let url = base.ApiURL else {
                 print("Couldn't load URL")
                 return
             }
             
-            
-            var URLRequest = URLRequest(url: url)
-            URLRequest.httpMethod = "GET"
-            URLRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
+            var URLRequest = base.baseURLRequest
             
             
             let (data, networkResponse) = try await URLSession.shared.data(for: URLRequest)
