@@ -14,22 +14,15 @@ import Foundation
     
     func loadActorURLsImage(actorID: Int) async {
         
-        let headers = [
-          "accept": "application/json",
-          "Authorization": "Bearer eed456115041deb5c36ed519eafea41a"
-        ]
-        
-        let apiKey = "eed456115041deb5c36ed519eafea41a"
         do {
-            guard let url = URL(string: "https://api.themoviedb.org/3/person/\(actorID)/images?api_key=\(apiKey)") else {
+            guard let url = LoadingProperties.actorImages(actorID: actorID).ApiURL else {
                 print("Couldn't load URL")
                 return
             }
             
-            
             var URLRequest = URLRequest(url: url)
             URLRequest.httpMethod = "GET"
-            URLRequest.allHTTPHeaderFields = headers
+            URLRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
             
             
             
