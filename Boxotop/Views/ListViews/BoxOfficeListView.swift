@@ -13,28 +13,34 @@ struct BoxOfficeListView: View {
     @StateObject var movieViewModel = MovieViewModel()
     var body: some View {
         NavigationView {
-            VStack {
-                
-                ScrollView {
-                    ForEach(movieViewModel.boxOfficeMovies.indices, id: \.self) { index in
-                        NavigationLink {
-                            MovieDetails(movie: movieViewModel.boxOfficeMovies[index])
-                        }label: {
-                            MovieCardView(movie: movieViewModel.boxOfficeMovies[index], index: index)
+            if movieViewModel.boxOfficeMovies.isEmpty {
+               ProgressView()
+                    .progressViewStyle(.circular)
+                .task {
+                    await movieViewModel.loadBoxOfficeMovies()
+                }
+            }else {
+                VStack {
+                    
+                    ScrollView {
+                        ForEach(movieViewModel.boxOfficeMovies.indices, id: \.self) { index in
+                            NavigationLink {
+                                MovieDetails(movie: movieViewModel.boxOfficeMovies[index])
+                            }label: {
+                                MovieCardView(movie: movieViewModel.boxOfficeMovies[index], index: index)
+                            }
+                            .tint(.black)
+                            
                         }
-                        .tint(.black)
                         
                     }
+                    .padding(.horizontal)
+                    .scrollIndicators(.hidden)
                     
                 }
-                .padding(.horizontal)
-                .scrollIndicators(.hidden)
-                
+                .navigationTitle("Box office")
             }
-            .task {
-                await movieViewModel.loadBoxOfficeMovies()
-            }
-            .navigationTitle("Box office")
+            
         }
     }
 }
