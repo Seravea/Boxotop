@@ -29,16 +29,17 @@ struct MyMovieRatingView: View {
                     }
                 }
                 .onDisappear {
-                    defaults.set(myRating - 1, forKey: String(movieID))
+                    defaults.set(myRating == 0 ? 0 : myRating - 1, forKey: String(movieID))
                 }
                 
             } else {
                 HStack {
-                    Text("\(defaults.integer(forKey: String(movieID)))")
-                    ForEach(0..<defaults.integer(forKey: String(movieID)), id: \.self) { _ in
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                    }
+                    
+                        ForEach(0...defaults.integer(forKey: String(movieID)) - 1, id: \.self) { _ in
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                        }
+                    
                     
                     if defaults.integer(forKey: String(movieID)) < 5 {
                         ForEach(0..<(5 - defaults.integer(forKey: String(movieID))), id: \.self) { _ in
@@ -50,8 +51,9 @@ struct MyMovieRatingView: View {
                 }
                 
                 Button {
-                    isEditing.toggle()
                     defaults.set(0, forKey: String(movieID))
+                    isEditing.toggle()
+                    
                 } label: {
                     Image(systemName: "arrow.counterclockwise")
                         .font(.callout)

@@ -67,11 +67,10 @@
 		1433ED3D2A4061B70008543F /* DetailsSubviews */ = {
 			isa = PBXGroup;
 			children = (
+				1433ED4B2A40A1FA0008543F /* RatingViews */,
 				1433ED3B2A405F040008543F /* SimilarMovieCellView.swift */,
 				1433ED462A408B200008543F /* SimilarMovieDetailsView.swift */,
 				1433ED372A4041070008543F /* ActorCellView.swift */,
-				1433ED3E2A4061E00008543F /* StarsNotationView.swift */,
-				1433ED402A4067FA0008543F /* MyMovieRatingView.swift */,
 			);
 			path = DetailsSubviews;
 			sourceTree = "<group>";
@@ -82,6 +81,15 @@
 				1433ED492A4095610008543F /* BaseRessources.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		1433ED4B2A40A1FA0008543F /* RatingViews */ = {
+			isa = PBXGroup;
+			children = (
+				1433ED3E2A4061E00008543F /* StarsNotationView.swift */,
+				1433ED402A4067FA0008543F /* MyMovieRatingView.swift */,
+			);
+			path = RatingViews;
 			sourceTree = "<group>";
 		};
 		14B40CEE2A3C530F00E0B68B = {
