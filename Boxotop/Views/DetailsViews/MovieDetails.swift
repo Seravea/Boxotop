@@ -11,7 +11,7 @@ struct MovieDetails: View {
     
     let movie: Movie
     
-    let casting = previewCastingResponse
+    @StateObject var movieDetailsViewModel = MovieDetailsViewModel()
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -58,12 +58,13 @@ struct MovieDetails: View {
                 }
                 
                 Section("Casting") {
-                    ForEach(previewCastingResponse.cast.sorted(by: {$0.popularity > $1.popularity }).prefix(10), id: \.id) { person in
+                    ForEach(movieDetailsViewModel.movieCasting.prefix(10), id: \.id) { person in
                         VStack {
                             Text(person.name)
                             Text("\(person.popularity)")
                         }
                     }
+                    
                 }
                 
                 Section("Similar Movies") {
@@ -75,11 +76,14 @@ struct MovieDetails: View {
             
         }
         .navigationBarTitleDisplayMode(.inline)
+        .task {
+           await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
+        }
     }
 }
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[2])
+        MovieDetails(movie: previewResponseData.results[7])
     }
 }
