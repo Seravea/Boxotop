@@ -8,23 +8,63 @@
 import SwiftUI
 
 struct SimilarMovieDetailsView: View {
-    let movie: Movie
-    @Binding var isShowingOverview: Bool
+   @Binding var selectedMovie: Movie?
+  
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            Text(movie.title)
-                .font(.title)
-                .bold()
+        if let movie = selectedMovie {
             
-            Text(movie.overview)
-            
+            VStack(spacing: 20) {
+                HStack {
+                    Text(movie.title)
+                        .font(.title)
+                        .bold()
+                    
+                    Spacer()
+                    
+                    Button{
+                        selectedMovie = nil
+                    }label: {
+                        Text("Quit")
+                    }
+                }
+                .padding([.horizontal, .top])
+            ScrollView {
+                Text(movie.overview)
+                AsyncImage(url: movie.posterURL) { image in
+                    ZStack {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 200, height: 280)
+                            .clipped()
+                            .cornerRadius(9)
+                            .shadow(radius: 0.5)
+                    }
+                } placeholder: {
+                    ZStack(alignment: .topLeading) {
+                        
+                        Rectangle()
+                            .cornerRadius(9)
+                            .foregroundColor(.gray.opacity(0.8))
+                           // .padding(.trailing, 8)
+                            .shadow(radius: 0.1)
+                        Text(movie.title)
+                            .padding(10)
+                            .font(.caption)
+                    }
+                    .frame(width: 100, height: 160)
+                }
+                
+                
+            }
+            .padding(.horizontal)
         }
-        .padding(.horizontal)
+        }
     }
 }
 
 struct SimilarMovieDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        SimilarMovieDetailsView(movie: previewResponseData.results[0], isShowingOverview: .constant(true))
+        SimilarMovieDetailsView(selectedMovie: .constant(previewResponseData.results[0]))
     }
 }

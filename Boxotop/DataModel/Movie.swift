@@ -21,7 +21,7 @@ struct MoviesResponse: Codable {
 }
 
 //struct of a Movie
-struct Movie: Codable {
+struct Movie: Codable, Identifiable {
     let adult: Bool
     let backdropPath: String?
     let id: Int

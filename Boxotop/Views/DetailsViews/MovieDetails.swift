@@ -13,6 +13,7 @@ struct MovieDetails: View {
     
     @StateObject var movieDetailsViewModel = MovieDetailsViewModel()
     
+    @State var selectedSimilarMovie: Movie?
     var body: some View {
         VStack(alignment: .leading) {
             
@@ -89,16 +90,26 @@ struct MovieDetails: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(movieDetailsViewModel.similarMovies, id: \.id) { similarMovie in
-                                   
+                                    Button {
+                                        selectedSimilarMovie = similarMovie
+                                        
+                                    } label: {
                                         SimilarMovieCellView(movie: similarMovie)
                                         .padding(.horizontal)
                                         .padding(.vertical, 5)
+                                    }
                                     
+
                                 }
                             }
                         }
                         .scrollIndicators(.hidden)
+                        
                     }
+                }
+                .sheet(item: $selectedSimilarMovie) { movie in
+                    SimilarMovieDetailsView(selectedMovie: $selectedSimilarMovie)
+                        .presentationDetents([.medium])
                 }
                 
             }
