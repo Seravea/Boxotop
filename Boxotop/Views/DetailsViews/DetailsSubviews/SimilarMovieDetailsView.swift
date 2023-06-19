@@ -13,8 +13,8 @@ struct SimilarMovieDetailsView: View {
     var body: some View {
         if let movie = selectedMovie {
             
-            VStack(spacing: 20) {
-                HStack {
+            VStack {
+                HStack(alignment: .top) {
                     Text(movie.title)
                         .font(.title)
                         .bold()
@@ -24,7 +24,7 @@ struct SimilarMovieDetailsView: View {
                     Button{
                         selectedMovie = nil
                     }label: {
-                        Text("Quit")
+                        Text("Done")
                     }
                 }
                 .padding([.horizontal, .top])

@@ -110,7 +110,9 @@ struct MovieDetails: View {
                 .sheet(item: $selectedSimilarMovie) { movie in
                     SimilarMovieDetailsView(selectedMovie: $selectedSimilarMovie)
                         .presentationDetents([.medium])
+                        
                 }
+                
                 
             }
             .listStyle(.plain)
