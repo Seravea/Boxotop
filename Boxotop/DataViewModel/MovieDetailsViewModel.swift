@@ -23,7 +23,7 @@ import Foundation
         let apiKey = "eed456115041deb5c36ed519eafea41a"
         
         do {
-            guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=\(apiKey)&language=fr-FR") else {
+            guard let url = URL(string: "https://api.themoviedb.org/3/movie/\(movieID)/credits?api_key=\(apiKey)&language=us-US") else {
                 print("Couldn't load URL")
                 return
             }

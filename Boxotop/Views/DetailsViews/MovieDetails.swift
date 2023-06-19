@@ -59,12 +59,17 @@ struct MovieDetails: View {
                 
                 Section("Casting") {
                     if let casting = movieDetailsViewModel.movieCasting {
-                        ForEach(casting.cast.prefix(10), id: \.id) { person in
-                            ActorCellView(person: person)
+                        
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(casting.cast.sorted(by: {$0.order < $1.order}).prefix(5), id: \.id) { person in
+                                   
+                                    ActorCellView(person: person)
+                                     
+                                }
+                            }
                         }
-                    }else {
-                        ProgressView()
-                            .progressViewStyle(.circular)
+                        .scrollIndicators(.hidden)
                     }
                 }
                 
@@ -74,18 +79,19 @@ struct MovieDetails: View {
                 
             }
             .listStyle(.plain)
-            
+            .task {
+               await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
+            }
         }
+        
         .navigationBarTitleDisplayMode(.inline)
-        .task {
-           await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
-        }
+        
     }
 }
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[0])
+        MovieDetails(movie: previewResponseData.results[3])
     }
 }
 

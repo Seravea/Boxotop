@@ -14,23 +14,18 @@ struct CastingResponse: Codable {
 }
 
 struct Cast: Codable {
-    let adult: Bool
     let id: Int
     let name: String
-    let popularity: Double
+    let character: String
     let profilePath: String?
-    let castID: Int?
-    let character: String?
-    let order: Int?
-
-    enum CodingKeys: String, CodingKey {
-        case adult, id
-        case name
-        case popularity
+    let order: Int
+    
+    
+    enum CodinkKeys: String, CodingKey {
+        case id, name, character
         case profilePath = "profile_path"
-        case castID = "cast_id"
-        case character
         case order
+        
     }
 }
 
