@@ -23,10 +23,11 @@ struct MoviesResponse: Codable {
 //struct of a Movie
 struct Movie: Codable {
     let adult: Bool
-    let backdropPath: String
+    let backdropPath: String?
     let id: Int
     let title: String
-    let originalTitle, overview, posterPath: String
+    let originalTitle, overview: String
+    let posterPath: String?
     let genreIDS: [Int]
     let popularity: Double
     let releaseDate: String
@@ -34,9 +35,13 @@ struct Movie: Codable {
     let voteAverage: Double
     let voteCount: Int
     
-    var posterURL: URL {
-        let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")!
-        return baseURL.appending(path: posterPath)
+    var posterURL: URL? {
+        if let posterPathURLString = posterPath {
+            let baseURL = URL(string: "https://image.tmdb.org/t/p/w500")!
+            return baseURL.appending(path: posterPathURLString)
+        }else {
+            return nil
+        }
     }
     
 

@@ -10,6 +10,9 @@
 		1433ED362A403D8B0008543F /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED352A403D8B0008543F /* MovieDetailsViewModel.swift */; };
 		1433ED382A4041070008543F /* ActorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED372A4041070008543F /* ActorCellView.swift */; };
 		1433ED3A2A4044A30008543F /* ActorImagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED392A4044A30008543F /* ActorImagesViewModel.swift */; };
+		1433ED3C2A405F040008543F /* SimilarMovieCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED3B2A405F040008543F /* SimilarMovieCellView.swift */; };
+		1433ED3F2A4061E00008543F /* StarsNotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED3E2A4061E00008543F /* StarsNotationView.swift */; };
+		1433ED412A4067FA0008543F /* MyMovieRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED402A4067FA0008543F /* MyMovieRatingView.swift */; };
 		14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40CFA2A3C530F00E0B68B /* BoxotopApp.swift */; };
 		14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40CFC2A3C530F00E0B68B /* ContentView.swift */; };
 		14B40CFF2A3C531000E0B68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B40CFE2A3C531000E0B68B /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 		1433ED352A403D8B0008543F /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
 		1433ED372A4041070008543F /* ActorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCellView.swift; sourceTree = "<group>"; };
 		1433ED392A4044A30008543F /* ActorImagesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorImagesViewModel.swift; sourceTree = "<group>"; };
+		1433ED3B2A405F040008543F /* SimilarMovieCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarMovieCellView.swift; sourceTree = "<group>"; };
+		1433ED3E2A4061E00008543F /* StarsNotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsNotationView.swift; sourceTree = "<group>"; };
+		1433ED402A4067FA0008543F /* MyMovieRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMovieRatingView.swift; sourceTree = "<group>"; };
 		14B40CF72A3C530F00E0B68B /* Boxotop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boxotop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B40CFA2A3C530F00E0B68B /* BoxotopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxotopApp.swift; sourceTree = "<group>"; };
 		14B40CFC2A3C530F00E0B68B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +62,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1433ED3D2A4061B70008543F /* DetailsSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				1433ED3B2A405F040008543F /* SimilarMovieCellView.swift */,
+				1433ED372A4041070008543F /* ActorCellView.swift */,
+				1433ED3E2A4061E00008543F /* StarsNotationView.swift */,
+				1433ED402A4067FA0008543F /* MyMovieRatingView.swift */,
+			);
+			path = DetailsSubviews;
+			sourceTree = "<group>";
+		};
 		14B40CEE2A3C530F00E0B68B = {
 			isa = PBXGroup;
 			children = (
@@ -138,8 +155,8 @@
 		14B40D132A3C728400E0B68B /* DetailsViews */ = {
 			isa = PBXGroup;
 			children = (
+				1433ED3D2A4061B70008543F /* DetailsSubviews */,
 				14B40D0C2A3C538000E0B68B /* MovieDetails.swift */,
-				1433ED372A4041070008543F /* ActorCellView.swift */,
 			);
 			path = DetailsViews;
 			sourceTree = "<group>";
@@ -218,12 +235,15 @@
 			files = (
 				1433ED362A403D8B0008543F /* MovieDetailsViewModel.swift in Sources */,
 				14B40D1D2A3CA36400E0B68B /* Casting.swift in Sources */,
+				1433ED3F2A4061E00008543F /* StarsNotationView.swift in Sources */,
 				14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */,
 				14B40D152A3C72C100E0B68B /* MoviesViewModel.swift in Sources */,
 				1433ED3A2A4044A30008543F /* ActorImagesViewModel.swift in Sources */,
+				1433ED412A4067FA0008543F /* MyMovieRatingView.swift in Sources */,
 				14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */,
 				1433ED382A4041070008543F /* ActorCellView.swift in Sources */,
 				14B40D1B2A3C78E200E0B68B /* MovieCardView.swift in Sources */,
+				1433ED3C2A405F040008543F /* SimilarMovieCellView.swift in Sources */,
 				14B40D0B2A3C537600E0B68B /* BoxOfficeListView.swift in Sources */,
 				14B40D192A3C75C400E0B68B /* PreviewDataModel.swift in Sources */,
 				14B40D0D2A3C538000E0B68B /* MovieDetails.swift in Sources */,

@@ -42,11 +42,22 @@ struct MovieDetails: View {
                     }
                 }
                 
-                VStack(alignment: .leading ,spacing: 15) {
-                    Text("Release date: \(movie.releaseDate)")
-                    Text("Audience : \(movie.voteAverage, specifier: "%.02f")")
-                    Text("Vote count: \(movie.voteCount)")
+                VStack(alignment: .leading) {
                     
+                    Text("Release date:")
+                    Text("\(movie.releaseDate)")
+                        .padding(.bottom, 10)
+                    
+                    Text("Audience :")
+                    StarsNotationView(vote: movie.voteAverage)
+                        .padding(.bottom, 10)
+                    
+                    Text("Vote count:")
+                    Text("\(movie.voteCount)")
+                        .padding(.bottom, 10)
+                    
+                    Text("My rating:")
+                    MyMovieRatingView(movieID: movie.id)
                 }
                 
             }
@@ -74,17 +85,20 @@ struct MovieDetails: View {
                 }
                 
                 Section("Similar Movies") {
-                    ScrollView(.horizontal) {
-                        HStack {
-                            ForEach(movieDetailsViewModel.similarMovies, id: \.id) { similarMovie in
-                               
-                                Text(similarMovie.title)
-                                 
+                    if movieDetailsViewModel.similarMovies.isEmpty == false {
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(movieDetailsViewModel.similarMovies, id: \.id) { similarMovie in
+                                   
+                                        SimilarMovieCellView(movie: similarMovie)
+                                        .padding(.horizontal)
+                                        .padding(.vertical, 5)
+                                    
+                                }
                             }
                         }
+                        .scrollIndicators(.hidden)
                     }
-                    .scrollIndicators(.hidden)
-
                 }
                 
             }
@@ -105,5 +119,6 @@ struct MovieDetails_Previews: PreviewProvider {
         MovieDetails(movie: previewResponseData.results[4])
     }
 }
+
 
 
