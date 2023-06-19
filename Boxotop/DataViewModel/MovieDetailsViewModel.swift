@@ -8,8 +8,8 @@
 import Foundation
 
 
-class MovieDetailsViewModel: ObservableObject {
-    @Published var movieCasting: [Cast] = []
+@MainActor class MovieDetailsViewModel: ObservableObject {
+    @Published var movieCasting: CastingResponse?
     
     
     
@@ -43,7 +43,7 @@ class MovieDetailsViewModel: ObservableObject {
             let decoder = JSONDecoder()
             let decodedData = try decoder.decode(CastingResponse.self, from: data)
                     
-            self.movieCasting = decodedData.cast.sorted(by: {$0.popularity > $1.popularity })
+            self.movieCasting = decodedData
             
         }catch {
             fatalError("error when fetching data from TheMovieDatabase \(error)")

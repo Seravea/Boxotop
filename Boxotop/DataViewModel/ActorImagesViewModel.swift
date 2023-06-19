@@ -8,7 +8,7 @@
 import Foundation
 
 
-class ActorImagesViewModel: ObservableObject {
+@MainActor class ActorImagesViewModel: ObservableObject {
     @Published var actorURLsImage: [PersonImageURL] = []
     
     
@@ -27,7 +27,7 @@ class ActorImagesViewModel: ObservableObject {
             }
             
             
-            var URLRequest = URLRequest(url: url )
+            var URLRequest = URLRequest(url: url)
             URLRequest.httpMethod = "GET"
             URLRequest.allHTTPHeaderFields = headers
             

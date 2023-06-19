@@ -58,10 +58,14 @@ struct MovieDetails: View {
                 }
                 
                 Section("Casting") {
-                    ForEach(movieDetailsViewModel.movieCasting.prefix(10), id: \.id) { person in
-                        ActorCellView(person: person)
+                    if let casting = movieDetailsViewModel.movieCasting {
+                        ForEach(casting.cast.prefix(10), id: \.id) { person in
+                            ActorCellView(person: person)
+                        }
+                    }else {
+                        ProgressView()
+                            .progressViewStyle(.circular)
                     }
-                    
                 }
                 
                 Section("Similar Movies") {
@@ -81,7 +85,7 @@ struct MovieDetails: View {
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[7])
+        MovieDetails(movie: previewResponseData.results[0])
     }
 }
 
