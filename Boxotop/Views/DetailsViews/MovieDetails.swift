@@ -74,13 +74,24 @@ struct MovieDetails: View {
                 }
                 
                 Section("Similar Movies") {
-                    Text("List of similar movies")
+                    ScrollView(.horizontal) {
+                        HStack {
+                            ForEach(movieDetailsViewModel.similarMovies, id: \.id) { similarMovie in
+                               
+                                Text(similarMovie.title)
+                                 
+                            }
+                        }
+                    }
+                    .scrollIndicators(.hidden)
+
                 }
                 
             }
             .listStyle(.plain)
             .task {
-               await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
+                await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
+                await movieDetailsViewModel.loadSimilarMovies(movieID: movie.id)
             }
         }
         
@@ -91,7 +102,7 @@ struct MovieDetails: View {
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[3])
+        MovieDetails(movie: previewResponseData.results[4])
     }
 }
 
