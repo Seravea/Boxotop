@@ -59,10 +59,7 @@ struct MovieDetails: View {
                 
                 Section("Casting") {
                     ForEach(movieDetailsViewModel.movieCasting.prefix(10), id: \.id) { person in
-                        VStack {
-                            Text(person.name)
-                            Text("\(person.popularity)")
-                        }
+                        ActorCellView(person: person)
                     }
                     
                 }
@@ -87,3 +84,5 @@ struct MovieDetails_Previews: PreviewProvider {
         MovieDetails(movie: previewResponseData.results[7])
     }
 }
+
+

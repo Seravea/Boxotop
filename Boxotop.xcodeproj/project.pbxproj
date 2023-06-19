@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1433ED362A403D8B0008543F /* MovieDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED352A403D8B0008543F /* MovieDetailsViewModel.swift */; };
+		1433ED382A4041070008543F /* ActorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1433ED372A4041070008543F /* ActorCellView.swift */; };
 		14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40CFA2A3C530F00E0B68B /* BoxotopApp.swift */; };
 		14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14B40CFC2A3C530F00E0B68B /* ContentView.swift */; };
 		14B40CFF2A3C531000E0B68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14B40CFE2A3C531000E0B68B /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		1433ED352A403D8B0008543F /* MovieDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewModel.swift; sourceTree = "<group>"; };
+		1433ED372A4041070008543F /* ActorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorCellView.swift; sourceTree = "<group>"; };
 		14B40CF72A3C530F00E0B68B /* Boxotop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Boxotop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14B40CFA2A3C530F00E0B68B /* BoxotopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxotopApp.swift; sourceTree = "<group>"; };
 		14B40CFC2A3C530F00E0B68B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				14B40D0C2A3C538000E0B68B /* MovieDetails.swift */,
+				1433ED372A4041070008543F /* ActorCellView.swift */,
 			);
 			path = DetailsViews;
 			sourceTree = "<group>";
@@ -215,6 +218,7 @@
 				14B40CFD2A3C530F00E0B68B /* ContentView.swift in Sources */,
 				14B40D152A3C72C100E0B68B /* MoviesViewModel.swift in Sources */,
 				14B40CFB2A3C530F00E0B68B /* BoxotopApp.swift in Sources */,
+				1433ED382A4041070008543F /* ActorCellView.swift in Sources */,
 				14B40D1B2A3C78E200E0B68B /* MovieCardView.swift in Sources */,
 				14B40D0B2A3C537600E0B68B /* BoxOfficeListView.swift in Sources */,
 				14B40D192A3C75C400E0B68B /* PreviewDataModel.swift in Sources */,
