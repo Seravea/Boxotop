@@ -9,11 +9,11 @@ import Foundation
 
 
 @MainActor class MovieDetailsViewModel: ObservableObject {
-    @Published var movieCasting: CastingResponse?
-    @Published var similarMovies: [Movie] = []
+    @Published private(set) var movieCasting: CastingResponse?
+    @Published private(set) var similarMovies: [Movie] = []
     
     
-    func loadMovieCasting(movieID: Int) async {
+   private func loadMovieCasting(movieID: Int) async {
        
         let base: LoadingProperties = .actorsList(movieID: movieID)
         
@@ -41,7 +41,7 @@ import Foundation
     }
     
     
-    func loadSimilarMovies(movieID: Int) async {
+   private func loadSimilarMovies(movieID: Int) async {
         
         let base: LoadingProperties = .similarMovies(movieID: movieID)
         
@@ -68,6 +68,14 @@ import Foundation
         }
         
         
+    }
+    
+    
+    func fetchingDataDetailsView(movieID: Int) {
+        Task {
+            await loadMovieCasting(movieID: movieID)
+            await loadSimilarMovies(movieID: movieID)
+        }
     }
     
     

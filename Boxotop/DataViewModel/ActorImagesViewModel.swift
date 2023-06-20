@@ -9,7 +9,7 @@ import Foundation
 
 
 @MainActor class ActorImagesViewModel: ObservableObject {
-    @Published var actorURLsImage: [PersonImageURL] = []
+    @Published private(set) var actorURLsImage: [PersonImageURL] = []
     
     
     func loadActorURLsImage(actorID: Int) async {

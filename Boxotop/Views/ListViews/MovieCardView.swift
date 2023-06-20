@@ -11,6 +11,7 @@ struct MovieCardView: View {
     let movie: Movie
     let index: Int
     var body: some View {
+        
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 10)
                 .frame(height: 150)
@@ -42,7 +43,7 @@ struct MovieCardView: View {
 
                 VStack {
                     Text(movie.title)
-                        .font(.title)
+                        .font(movie.title.count < 50 ? .title : .title2)
                         .multilineTextAlignment(.leading)
                     
                     
@@ -56,6 +57,6 @@ struct MovieCardView: View {
 
 struct MovieCardView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieCardView(movie: previewResponseData.results[2], index: 1)
+        MovieCardView(movie: previewResponseData.results[19], index: 1)
     }
 }

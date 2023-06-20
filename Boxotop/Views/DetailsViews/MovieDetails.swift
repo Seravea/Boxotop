@@ -116,9 +116,8 @@ struct MovieDetails: View {
                 
             }
             .listStyle(.plain)
-            .task {
-                await movieDetailsViewModel.loadMovieCasting(movieID: movie.id)
-                await movieDetailsViewModel.loadSimilarMovies(movieID: movie.id)
+            .onAppear {
+                movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
             }
         }
         
@@ -129,7 +128,7 @@ struct MovieDetails: View {
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[4])
+        MovieDetails(movie: previewResponseData.results[1])
     }
 }
 
