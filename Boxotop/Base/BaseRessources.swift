@@ -47,7 +47,7 @@ enum LoadingProperties {
      urlRequest.httpMethod = "GET"
      urlRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
      */
-    var baseURLRequest: URLRequest {
+    var myURLRequest: URLRequest {
         var returnURLRequest = URLRequest(url: self.ApiURL!)
         returnURLRequest.httpMethod = "GET"
         returnURLRequest.allHTTPHeaderFields = headers

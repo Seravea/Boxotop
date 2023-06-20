@@ -12,19 +12,15 @@ import Foundation
     
     
     func loadBoxOfficeMovies() async {
-        
         let base: LoadingProperties = .boxOfficeMovies
         
         do {
-            guard let url = base.ApiURL else {
+            guard base.ApiURL != nil else {
                 print("Couldn't load URL")
                 return
             }
               
-            let urlRequest = base.baseURLRequest
-            
-            
-            let (data, networkResponse) = try await URLSession.shared.data(for: urlRequest)
+            let (data, networkResponse) = try await URLSession.shared.data(for: base.myURLRequest)
             
             guard (networkResponse as? HTTPURLResponse)?.statusCode == 200 else {
                 fatalError("Error when fetching data on the URLSession \(networkResponse)")
