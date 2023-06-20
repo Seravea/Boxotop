@@ -24,9 +24,15 @@ struct MovieDetails: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .padding(.horizontal)
+            
+            
             List {
+                
+                
                 HStack(spacing: 20) {
+                    
                     ZStack(alignment: .bottomTrailing) {
+                        
                         AsyncImage(url: movie.posterURL) { image in
                             image
                                 .resizable()
@@ -37,16 +43,14 @@ struct MovieDetails: View {
                                 .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
                                 
                         } placeholder: {
-                            ZStack {
-                                ProgressView()
-                                    .progressViewStyle(.circular)
-                                Rectangle()
-                                    .frame(width: 150, height: 200)
-                                    .cornerRadius(9)
-                                    .foregroundColor(.gray.opacity(0.9))
-                                    .padding(.trailing, 8)
-                                    .shadow(radius: 0.1)
-                            }
+                            
+                            Rectangle()
+                                .frame(width: 150, height: 200)
+                                .cornerRadius(9)
+                                .foregroundColor(.gray.opacity(0.9))
+                                .padding(.trailing, 8)
+                                .shadow(radius: 0.1)
+                        
                         }
                         
                         Button {
@@ -58,13 +62,13 @@ struct MovieDetails: View {
                             Image(systemName: "\(zoomOnPoster ? "minus" : "plus").magnifyingglass")
                                 .foregroundColor(.black)
                                 .padding(5)
-                                .background(Circle().foregroundColor(.white.opacity(0.8)))
+                                .background(Circle().foregroundColor(.myGreen.opacity(0.8)))
                         }
                         .buttonStyle(.borderless)
+                        .padding(2)
+                       
                         
                     }
-                    .transition(.scale)
-                    
                     if zoomOnPoster == false {
                         VStack(alignment: .leading) {
                             

@@ -32,6 +32,7 @@ struct ActorCellView: View {
                             .padding(.horizontal)
                             
                         } placeholder: {
+                            
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(width: 100, height: 150)

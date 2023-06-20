@@ -29,15 +29,18 @@ struct MovieCardView: View {
                         .cornerRadius(9)
                         .shadow(radius: 0.1)
                 } placeholder: {
+                    
                     ZStack {
-                        ProgressView()
-                            .progressViewStyle(.circular)
+                      
                         Rectangle()
                             .frame(width: 90, height: 130)
                             .cornerRadius(9)
                             .foregroundColor(.gray.opacity(0.9))
                             .padding(.trailing, 8)
                             .shadow(radius: 0.1)
+                        
+                        ProgressView()
+                            .progressViewStyle(.circular)
                     }
                 }
                 
