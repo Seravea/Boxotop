@@ -9,62 +9,86 @@ import SwiftUI
 
 struct MovieDetails: View {
     @Environment(\.colorScheme) var colorScheme
-    
+  
     let movie: Movie
     
     @StateObject var movieDetailsViewModel = MovieDetailsViewModel()
     
     @State var selectedSimilarMovie: Movie?
+    
+    @State var zoomOnPoster: Bool = false
     var body: some View {
+
         VStack(alignment: .leading) {
             
             Text(movie.title)
                 .font(.largeTitle)
                 .padding(.horizontal)
-        List {
-            HStack(spacing: 20) {
-                AsyncImage(url: movie.posterURL) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 150, height: 200)
-                        .clipped()
-                        .cornerRadius(9)
-                        .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
-                } placeholder: {
-                    ZStack {
-                        ProgressView()
-                            .progressViewStyle(.circular)
-                        Rectangle()
-                            .frame(width: 150, height: 200)
-                            .cornerRadius(9)
-                            .foregroundColor(.gray.opacity(0.9))
-                            .padding(.trailing, 8)
-                            .shadow(radius: 0.1)
+            List {
+                HStack(spacing: 20) {
+                    ZStack(alignment: .bottomTrailing) {
+                        AsyncImage(url: movie.posterURL) { image in
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: zoomOnPoster ? 300 : 150, height: zoomOnPoster ? 400 : 200)
+                                .clipped()
+                                .cornerRadius(9)
+                                .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
+                                
+                        } placeholder: {
+                            ZStack {
+                                ProgressView()
+                                    .progressViewStyle(.circular)
+                                Rectangle()
+                                    .frame(width: 150, height: 200)
+                                    .cornerRadius(9)
+                                    .foregroundColor(.gray.opacity(0.9))
+                                    .padding(.trailing, 8)
+                                    .shadow(radius: 0.1)
+                            }
+                        }
+                        
+                        Button {
+                            withAnimation(.spring()) {
+                                zoomOnPoster.toggle()
+                            }
+                            
+                        }label: {
+                            Image(systemName: "\(zoomOnPoster ? "minus" : "plus").magnifyingglass")
+                                .foregroundColor(.black)
+                                .padding(5)
+                                .background(Circle().foregroundColor(.white.opacity(0.8)))
+                        }
+                        .buttonStyle(.borderless)
+                        
+                    }
+                    .transition(.scale)
+                    
+                    if zoomOnPoster == false {
+                        VStack(alignment: .leading) {
+                            
+                            Text("Release date:")
+                            Text("\(movie.releaseDate)")
+                                .padding(.bottom, 5)
+                            
+                            Text("Audience :")
+                            StarsNotationView(vote: movie.voteAverage)
+                                .padding(.bottom, 5)
+                            
+                            Text("Vote count:")
+                            Text("\(movie.voteCount)")
+                                .padding(.bottom, 5)
+                            
+                            Text("My rating:")
+                            MyMovieRatingView(movieID: movie.id)
+                        }
+                        .transition(.move(edge: .trailing).combined(with: .opacity))
                     }
                 }
+                .padding(.horizontal)
+                    
                 
-                VStack(alignment: .leading) {
-                    
-                    Text("Release date:")
-                    Text("\(movie.releaseDate)")
-                        .padding(.bottom, 5)
-                    
-                    Text("Audience :")
-                    StarsNotationView(vote: movie.voteAverage)
-                        .padding(.bottom, 5)
-                    
-                    Text("Vote count:")
-                    Text("\(movie.voteCount)")
-                        .padding(.bottom, 5)
-                    
-                    Text("My rating:")
-                    MyMovieRatingView(movieID: movie.id)
-                }
-                
-            }
-            .padding(.horizontal)
-            
                 
                 Section("Synopsis") {
                     Text(movie.overview)
@@ -117,14 +141,13 @@ struct MovieDetails: View {
                 
                 
             }
-        .listStyle(.plain)
+            .listStyle(.plain)
             .task {
                 await movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
             }
         }
-        
         .navigationBarTitleDisplayMode(.inline)
-        
+      
     }
 }
 
