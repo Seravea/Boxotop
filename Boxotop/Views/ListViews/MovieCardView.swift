@@ -40,7 +40,7 @@ struct MovieCardView: View {
                             .shadow(radius: 0.1)
                     }
                 }
-
+                
                 VStack {
                     Text(movie.title)
                         .font(movie.title.count < 50 ? .title : .title2)

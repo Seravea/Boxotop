@@ -19,7 +19,7 @@ import Foundation
                 print("Couldn't load URL")
                 return
             }
-          
+            
             let (data, networkResponse) = try await URLSession.shared.data(for: base.myURLRequest)
             
             guard (networkResponse as? HTTPURLResponse)?.statusCode == 200 else {
@@ -28,7 +28,7 @@ import Foundation
             
             let decoder = JSONDecoder()
             let decodedData = try decoder.decode(ImagesResponse.self, from: data)
-                    
+            
             self.actorURLsImage = decodedData.profiles
             
         }catch {

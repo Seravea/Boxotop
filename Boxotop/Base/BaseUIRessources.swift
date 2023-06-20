@@ -22,15 +22,14 @@ extension Color {
 
 
 
-func shadowColorOnColorScheme() -> Color {
+func shadowColorOnColorScheme(colorSchemeToCheck: ColorScheme) -> Color {
     
-    @Environment(\.colorScheme) var colorScheme
-
-    if colorScheme == .dark {
+    
+    if colorSchemeToCheck == .dark {
         return .white
     }else {
-        return .white
+        return .black
     }
-
+    
 }
 

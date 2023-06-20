@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ActorCellView: View {
+    @Environment (\.colorScheme) var colorScheme
+    
     let person: Cast
     @StateObject var actorImageViewModel = ActorImagesViewModel()
     var body: some View {
@@ -23,6 +25,7 @@ struct ActorCellView: View {
                                     .scaledToFill()
                                     .frame(width: 100, height: 150)
                                     .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
                                 Text(person.name)
                                     .font(.caption)
                             }

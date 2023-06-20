@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct StarsNotationView: View {
-  
+    
     let vote: Double
     var starVote: Int {
         return Int(vote) / 2
     }
-
+    
     var body: some View {
         
         HStack {

@@ -13,8 +13,8 @@ import Foundation
     @Published private(set) var similarMovies: [Movie] = []
     
     
-   private func loadMovieCasting(movieID: Int) async {
-       
+    private func loadMovieCasting(movieID: Int) async {
+        
         let base: LoadingProperties = .actorsList(movieID: movieID)
         
         do {
@@ -31,7 +31,7 @@ import Foundation
             
             let decoder = JSONDecoder()
             let decodedData = try decoder.decode(CastingResponse.self, from: data)
-                    
+            
             self.movieCasting = decodedData
             
         }catch {
@@ -41,7 +41,7 @@ import Foundation
     }
     
     
-   private func loadSimilarMovies(movieID: Int) async {
+    private func loadSimilarMovies(movieID: Int) async {
         
         let base: LoadingProperties = .similarMovies(movieID: movieID)
         
@@ -50,7 +50,7 @@ import Foundation
                 print("Couldn't load URL")
                 return
             }
-           
+            
             
             let (data, networkResponse) = try await URLSession.shared.data(for: base.myURLRequest)
             
@@ -60,7 +60,7 @@ import Foundation
             
             let decoder = JSONDecoder()
             let decodedData = try decoder.decode(MoviesResponse.self, from: data)
-                    
+            
             self.similarMovies = decodedData.results
             
         }catch {
@@ -71,10 +71,11 @@ import Foundation
     }
     
     
-    func fetchingDataDetailsView(movieID: Int) {
+    func fetchingDataDetailsView(movieID: Int) async {
         Task {
             await loadMovieCasting(movieID: movieID)
             await loadSimilarMovies(movieID: movieID)
+            print("this movie is showing")
         }
     }
     

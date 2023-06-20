@@ -15,11 +15,11 @@ struct BoxOfficeListView: View {
     var body: some View {
         NavigationView {
             if movieViewModel.boxOfficeMovies.isEmpty {
-               ProgressView()
+                ProgressView()
                     .progressViewStyle(.circular)
-                .task {
-                    await movieViewModel.loadBoxOfficeMovies()
-                }
+                    .task {
+                        await movieViewModel.loadBoxOfficeMovies()
+                    }
             }else {
                 VStack {
                     

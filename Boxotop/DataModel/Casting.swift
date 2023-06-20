@@ -46,7 +46,7 @@ struct PersonImageURL: Codable {
             return nil
         }
     }
-
+    
     enum CodingKeys: String, CodingKey {
         case filePath = "file_path"
     }

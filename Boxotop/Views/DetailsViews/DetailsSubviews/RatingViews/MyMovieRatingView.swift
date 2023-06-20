@@ -20,13 +20,13 @@ struct MyMovieRatingView: View {
     var body: some View {
         HStack {
             if defaults.integer(forKey: String(movieID)) == 0 || isEditing {
-            ForEach(1...5, id: \.self) { number in
-                Image(systemName: myRating > number ? "star.fill" : "star")
-                    .foregroundColor(.yellow)
-                    .onTapGesture {
-                        myRating = number + 1
-                        
-                    }
+                ForEach(1...5, id: \.self) { number in
+                    Image(systemName: myRating > number ? "star.fill" : "star")
+                        .foregroundColor(.yellow)
+                        .onTapGesture {
+                            myRating = number + 1
+                            
+                        }
                 }
                 .onDisappear {
                     defaults.set(myRating == 0 ? 0 : myRating - 1, forKey: String(movieID))
@@ -35,10 +35,10 @@ struct MyMovieRatingView: View {
             } else {
                 HStack {
                     
-                        ForEach(0...defaults.integer(forKey: String(movieID)) - 1, id: \.self) { _ in
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.yellow)
-                        }
+                    ForEach(0...defaults.integer(forKey: String(movieID)) - 1, id: \.self) { _ in
+                        Image(systemName: "star.fill")
+                            .foregroundColor(.yellow)
+                    }
                     
                     
                     if defaults.integer(forKey: String(movieID)) < 5 {
@@ -58,7 +58,7 @@ struct MyMovieRatingView: View {
                     Image(systemName: "arrow.counterclockwise")
                         .font(.callout)
                 }
-
+                
             }
         }
     }

@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct SimilarMovieDetailsView: View {
-   @Binding var selectedMovie: Movie?
-  
+    @Environment(\.colorScheme) var colorScheme
+    
+    
+    @Binding var selectedMovie: Movie?
+    
     var body: some View {
         if let movie = selectedMovie {
             
@@ -29,43 +32,44 @@ struct SimilarMovieDetailsView: View {
                 }
                 .padding([.horizontal, .top])
                 
-            ScrollView {
-                Text(movie.overview)
-                AsyncImage(url: movie.posterURL) { image in
-                    ZStack {
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 200, height: 280)
-                            .clipped()
-                            .cornerRadius(9)
-                            .shadow(radius: 0.5)
+                ScrollView {
+                    Text(movie.overview)
+                    AsyncImage(url: movie.posterURL) { image in
+                        ZStack {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200, height: 280)
+                                .clipped()
+                                .cornerRadius(9)
+                            
+                        }
+                    } placeholder: {
+                        ZStack(alignment: .topLeading) {
+                            
+                            Rectangle()
+                                .cornerRadius(9)
+                                .foregroundColor(.gray.opacity(0.8))
+                                .shadow(radius: 0.1)
+                            Text(movie.title)
+                                .padding(10)
+                                .font(.caption)
+                                .multilineTextAlignment(.leading)
+                        }
+                        .frame(width: 100, height: 160)
                     }
-                } placeholder: {
-                    ZStack(alignment: .topLeading) {
-                        
-                        Rectangle()
-                            .cornerRadius(9)
-                            .foregroundColor(.gray.opacity(0.8))
-                           // .padding(.trailing, 8)
-                            .shadow(radius: 0.1)
-                        Text(movie.title)
-                            .padding(10)
-                            .font(.caption)
-                    }
-                    .frame(width: 100, height: 160)
+                    .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) ,radius: 1)
+                    
+                    
                 }
-                
-                
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
-        }
         }
     }
 }
 
 struct SimilarMovieDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        SimilarMovieDetailsView(selectedMovie: .constant(previewResponseData.results[0]))
+        SimilarMovieDetailsView(selectedMovie: .constant(previewResponseData.results[14]))
     }
 }

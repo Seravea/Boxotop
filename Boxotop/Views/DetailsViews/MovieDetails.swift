@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieDetails: View {
+    @Environment(\.colorScheme) var colorScheme
     
     let movie: Movie
     
@@ -20,7 +21,7 @@ struct MovieDetails: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .padding(.horizontal)
-         
+            
             HStack(alignment: .top) {
                 AsyncImage(url: movie.posterURL) { image in
                     image
@@ -29,7 +30,7 @@ struct MovieDetails: View {
                         .frame(width: 150, height: 200)
                         .clipped()
                         .cornerRadius(9)
-                        .shadow(radius: 0.1)
+                        .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
                 } placeholder: {
                     ZStack {
                         ProgressView()
@@ -75,9 +76,9 @@ struct MovieDetails: View {
                         ScrollView(.horizontal) {
                             HStack {
                                 ForEach(casting.cast.sorted(by: {$0.order < $1.order}).prefix(5), id: \.id) { person in
-                                   
+                                    
                                     ActorCellView(person: person)
-                                     
+                                    
                                 }
                             }
                         }
@@ -95,11 +96,11 @@ struct MovieDetails: View {
                                         
                                     } label: {
                                         SimilarMovieCellView(movie: similarMovie)
-                                        .padding(.horizontal)
-                                        .padding(.vertical, 5)
+                                            .padding(.horizontal)
+                                            .padding(.vertical, 5)
                                     }
                                     
-
+                                    
                                 }
                             }
                         }
@@ -109,15 +110,15 @@ struct MovieDetails: View {
                 }
                 .sheet(item: $selectedSimilarMovie) { movie in
                     SimilarMovieDetailsView(selectedMovie: $selectedSimilarMovie)
-                        .presentationDetents([.medium])
-                        
+                        .presentationDetents([.medium, .large])
+                    
                 }
                 
                 
             }
             .listStyle(.plain)
-            .onAppear {
-                movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
+            .task {
+                await movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
             }
         }
         
@@ -128,7 +129,7 @@ struct MovieDetails: View {
 
 struct MovieDetails_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetails(movie: previewResponseData.results[1])
+        MovieDetails(movie: previewResponseData.results[14])
     }
 }
 
