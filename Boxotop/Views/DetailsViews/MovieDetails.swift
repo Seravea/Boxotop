@@ -21,8 +21,8 @@ struct MovieDetails: View {
             Text(movie.title)
                 .font(.largeTitle)
                 .padding(.horizontal)
-            
-            HStack(alignment: .top) {
+        List {
+            HStack(spacing: 20) {
                 AsyncImage(url: movie.posterURL) { image in
                     image
                         .resizable()
@@ -64,7 +64,7 @@ struct MovieDetails: View {
                 
             }
             .padding(.horizontal)
-            List {
+            
                 
                 Section("Synopsis") {
                     Text(movie.overview)
@@ -78,6 +78,7 @@ struct MovieDetails: View {
                                 ForEach(casting.cast.sorted(by: {$0.order < $1.order}).prefix(5), id: \.id) { person in
                                     
                                     ActorCellView(person: person)
+                                        .padding(.vertical, 5)
                                     
                                 }
                             }
@@ -116,7 +117,7 @@ struct MovieDetails: View {
                 
                 
             }
-            .listStyle(.plain)
+        .listStyle(.plain)
             .task {
                 await movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
             }
