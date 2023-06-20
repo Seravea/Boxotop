@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct MovieDetails: View {
+    
     @Environment(\.colorScheme) var colorScheme
-  
+    
     let movie: Movie
     
     @StateObject var movieDetailsViewModel = MovieDetailsViewModel()
@@ -17,6 +18,7 @@ struct MovieDetails: View {
     @State var selectedSimilarMovie: Movie?
     
     @State var zoomOnPoster: Bool = false
+    
     var body: some View {
 
         VStack(alignment: .leading) {
@@ -28,47 +30,10 @@ struct MovieDetails: View {
             
             List {
                 
-                
                 HStack(spacing: 20) {
                     
-                    ZStack(alignment: .bottomTrailing) {
-                        
-                        AsyncImage(url: movie.posterURL) { image in
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: zoomOnPoster ? 300 : 150, height: zoomOnPoster ? 400 : 200)
-                                .clipped()
-                                .cornerRadius(9)
-                                .shadow(color: shadowColorOnColorScheme(colorSchemeToCheck: colorScheme) , radius: 0.5)
-                                
-                        } placeholder: {
-                            
-                            Rectangle()
-                                .frame(width: 150, height: 200)
-                                .cornerRadius(9)
-                                .foregroundColor(.gray.opacity(0.9))
-                                .padding(.trailing, 8)
-                                .shadow(radius: 0.1)
-                        
-                        }
-                        
-                        Button {
-                            withAnimation(.spring()) {
-                                zoomOnPoster.toggle()
-                            }
-                            
-                        }label: {
-                            Image(systemName: "\(zoomOnPoster ? "minus" : "plus").magnifyingglass")
-                                .foregroundColor(.black)
-                                .padding(5)
-                                .background(Circle().foregroundColor(.myGreen.opacity(0.8)))
-                        }
-                        .buttonStyle(.borderless)
-                        .padding(2)
-                       
-                        
-                    }
+                    PosterCellView(movie: movie, isZoomOn: $zoomOnPoster)
+                    
                     if zoomOnPoster == false {
                         VStack(alignment: .leading) {
                             
@@ -97,6 +62,7 @@ struct MovieDetails: View {
                 Section("Synopsis") {
                     Text(movie.overview)
                 }
+                
                 
                 Section("Casting") {
                     if let casting = movieDetailsViewModel.movieCasting {
@@ -146,10 +112,12 @@ struct MovieDetails: View {
                 
             }
             .listStyle(.plain)
+            
             .task {
                 await movieDetailsViewModel.fetchingDataDetailsView(movieID: movie.id)
             }
         }
+        
         .navigationBarTitleDisplayMode(.inline)
       
     }
@@ -160,6 +128,8 @@ struct MovieDetails_Previews: PreviewProvider {
         MovieDetails(movie: previewResponseData.results[14])
     }
 }
+
+
 
 
 
