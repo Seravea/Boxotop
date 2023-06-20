@@ -47,15 +47,15 @@ struct MovieDetails: View {
                     
                     Text("Release date:")
                     Text("\(movie.releaseDate)")
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 5)
                     
                     Text("Audience :")
                     StarsNotationView(vote: movie.voteAverage)
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 5)
                     
                     Text("Vote count:")
                     Text("\(movie.voteCount)")
-                        .padding(.bottom, 10)
+                        .padding(.bottom, 5)
                     
                     Text("My rating:")
                     MyMovieRatingView(movieID: movie.id)

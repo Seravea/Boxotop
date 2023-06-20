@@ -11,6 +11,7 @@ struct BoxOfficeListView: View {
     
     //var previewDataTest = previewResponseData
     @StateObject var movieViewModel = MovieViewModel()
+    
     var body: some View {
         NavigationView {
             if movieViewModel.boxOfficeMovies.isEmpty {
