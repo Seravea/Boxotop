@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BoxOfficeListView: View {
     
-    //var previewDataTest = previewResponseData
+    @State var mySearchText: String = ""
     @StateObject var movieViewModel = MovieViewModel()
     
     var body: some View {
@@ -24,11 +24,17 @@ struct BoxOfficeListView: View {
                 VStack {
                     
                     ScrollView {
-                        ForEach(movieViewModel.boxOfficeMovies.indices, id: \.self) { index in
+                        ForEach(movieViewModel.boxOfficeMovies.filter({
+                            
+                            mySearchText.isEmpty ? true :
+                            $0.title.localizedCaseInsensitiveContains(mySearchText.lowercased())
+                            
+                            
+                        }), id: \.id) { movie in
                             NavigationLink {
-                                MovieDetails(movie: movieViewModel.boxOfficeMovies[index])
+                                MovieDetails(movie: movie)
                             }label: {
-                                MovieCardView(movie: movieViewModel.boxOfficeMovies[index], index: index)
+                                MovieCardView(movie: movie, index: findIndex(movies: movieViewModel.boxOfficeMovies, movieToCheck: movie))
                             }
                             .tint(.black)
                             
@@ -40,6 +46,7 @@ struct BoxOfficeListView: View {
                     
                 }
                 .navigationTitle("Box office")
+                .searchable(text: $mySearchText)
             }
             
         }

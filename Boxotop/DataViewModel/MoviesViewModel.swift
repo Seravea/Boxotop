@@ -30,6 +30,7 @@ import Foundation
             let decodedData = try decoder.decode(MoviesResponse.self, from: data)
             
             self.boxOfficeMovies = decodedData.results
+            
         }catch {
             fatalError("error when fetching data from TheMovieDatabase \(error)")
         }
