@@ -8,7 +8,6 @@
 import Foundation
 
 
-
 enum LoadingProperties {
     case boxOfficeMovies
     case similarMovies(movieID: Int)
@@ -42,11 +41,6 @@ enum LoadingProperties {
         }
     }
     
-    /*
-     var urlRequest = URLRequest(url: url)
-     urlRequest.httpMethod = "GET"
-     urlRequest.allHTTPHeaderFields = LoadingProperties.defaultRessources.headers
-     */
     var myURLRequest: URLRequest {
         var returnURLRequest = URLRequest(url: self.ApiURL!)
         returnURLRequest.httpMethod = "GET"
@@ -55,7 +49,16 @@ enum LoadingProperties {
     }
     
     
-    
-    
+}
+
+func findIndex(movies: [Movie], movieToCheck: Movie) -> Int {
+    var foundIndex: Int = -1
+    for (index , movie) in movies.enumerated() {
+        if movieToCheck.id == movie.id {
+            foundIndex = index
+        }
+        
+    }
+    return foundIndex
     
 }

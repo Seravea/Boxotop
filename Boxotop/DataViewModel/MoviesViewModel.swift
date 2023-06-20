@@ -19,7 +19,7 @@ import Foundation
                 print("Couldn't load URL")
                 return
             }
-              
+            
             let (data, networkResponse) = try await URLSession.shared.data(for: base.myURLRequest)
             
             guard (networkResponse as? HTTPURLResponse)?.statusCode == 200 else {
@@ -30,7 +30,7 @@ import Foundation
             let decodedData = try decoder.decode(MoviesResponse.self, from: data)
             
             self.boxOfficeMovies = decodedData.results
-            
+            print("movies is ok !!")
         }catch {
             fatalError("error when fetching data from TheMovieDatabase \(error)")
         }
