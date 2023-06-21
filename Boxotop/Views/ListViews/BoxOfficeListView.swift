@@ -47,6 +47,15 @@ struct BoxOfficeListView: View {
                 }
                 .navigationTitle("Box office")
                 .searchable(text: $mySearchText)
+                .toolbar {
+                    Button{
+                        Task {
+                          await movieViewModel.loadBoxOfficeMovies()
+                        }
+                    }label: {
+                        Image(systemName: "arrow.triangle.2.circlepath")
+                    }
+                }
             }
             
         }

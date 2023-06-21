@@ -20,8 +20,6 @@ extension Color {
 
 
 
-
-
 func shadowColorOnColorScheme(colorSchemeToCheck: ColorScheme) -> Color {
     
     
