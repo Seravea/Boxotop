@@ -84,7 +84,7 @@ struct MovieDetails: View {
                 Section("Similar Movies") {
                     if movieDetailsViewModel.similarMovies.isEmpty == false {
                         ScrollView(.horizontal) {
-                            HStack {
+                            LazyHStack {
                                 ForEach(movieDetailsViewModel.similarMovies, id: \.id) { similarMovie in
                                     Button {
                                         selectedSimilarMovie = similarMovie
